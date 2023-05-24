@@ -5,3 +5,13 @@
 body {
   @apply font-sans min-h-screen w-full bg-background-primary text-normal;
 }
+
+:is(pre, code) {
+  @apply font-monospace;
+}
+
+span {
+  @apply text-weak;
+}
+
+

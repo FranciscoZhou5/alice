@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import FormLogin from "@/components/FormLogin";
 
 export default function Home() {
-  redirect("/chat");
+  return (
+    <main className="w-full min-h-screen flex justify-center items-center">
+      <FormLogin />
+    </main>
+  );
 }
