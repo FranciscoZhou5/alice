@@ -29,7 +29,7 @@ const presets: ChatMessage[] = [
   },
 ];
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export async function POST(req: Request) {
   const { messages, sender } = await req.json();

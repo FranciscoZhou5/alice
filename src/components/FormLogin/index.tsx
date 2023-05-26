@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { parseCookies, setCookie } from "nookies";
 import { FormEvent, useEffect, useState } from "react";
 
 export default function FormLogin() {
@@ -24,17 +25,9 @@ export default function FormLogin() {
       return setError("Nome não ter mais que 16 letras.");
     }
 
-    localStorage.setItem("Alycia@username", username);
+    setCookie(null, "username", username);
     router.push("/chat");
   }
-
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("Alycia@username");
-
-    if (storedUsername) {
-      router.push("/chat");
-    }
-  }, [router]);
 
   return (
     <form onSubmit={handleLogin} className="flex flex-col p-4 bg-background-secundary rounded-md">
