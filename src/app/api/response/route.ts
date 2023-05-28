@@ -1,3 +1,4 @@
+import { supabase } from "@/lib/supabase";
 import { ChatMessage } from "@/store/ChatStore";
 import { OpenAIStream, OpenAIStreamPayload } from "@/utils/OpenAIStream";
 
@@ -33,6 +34,17 @@ export const runtime = "edge";
 
 export async function POST(req: Request) {
   const { messages, sender } = await req.json();
+
+  const { data, error } = await supabase.from("prompts").insert({
+    sender,
+    content: messages[messages.length - 1].content,
+  });
+
+  if (error) {
+    console.log(error);
+
+    return new Response(error.message, { status: 500 });
+  }
 
   if (!messages) {
     return new Response("No prompt in the request", { status: 400 });

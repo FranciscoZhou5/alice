@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { cookies } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
   const cookiesStore = cookies();
 
   if (cookiesStore.has("username")) {

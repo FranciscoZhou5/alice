@@ -25,7 +25,9 @@ export default function FormLogin() {
       return setError("Nome não ter mais que 16 letras.");
     }
 
-    setCookie(null, "username", username);
+    setCookie(null, "username", username, {
+      maxAge: 30 * 24 * 60 * 60,
+    });
     router.push("/chat");
   }
 
@@ -41,7 +43,6 @@ export default function FormLogin() {
           error && "border-red-500 focus:border-red-500"
         }`}
         placeholder="Homer"
-        // required
       />
       <span className="text-xs mt-[1px] h-5 text-red-500"> {error} </span>
 

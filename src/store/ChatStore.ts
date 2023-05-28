@@ -24,6 +24,8 @@ export const useChatStore = create<IChat>((set, get) => ({
 
     set({ messages: [...messages, newMessage] });
 
+    console.time("chat response");
+
     const response = await fetch("/api/response", {
       method: "POST",
       body: JSON.stringify({ messages: [...messages, newMessage], sender }),
@@ -53,5 +55,7 @@ export const useChatStore = create<IChat>((set, get) => ({
     }
 
     set((state) => ({ ...state, messages: [...state.messages, { role: "assistant", content: state.chatResponse }], chatResponse: "" }));
+
+    console.timeEnd("chat response");
   },
 }));
