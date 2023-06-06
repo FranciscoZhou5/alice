@@ -25,7 +25,7 @@ export default async function APIUsage() {
   const data = await getAPIUsage();
 
   return (
-    <div className="max-w-[800px] mx-auto">
+    <div className="max-w-[800px] mx-auto px-4">
       <div className="flex items-center h-12">
         <Link href="/chat" className="flex space-x-2 items-center group ">
           <ArrowLeft size={20} className="text-weak group-hover:text-primary duration-200" />
