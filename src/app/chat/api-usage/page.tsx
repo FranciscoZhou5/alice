@@ -16,7 +16,7 @@ async function getAPIUsage(): Promise<APIUsage> {
   const cookiesStore = cookies();
   const username = cookiesStore.get("username")?.value;
 
-  const response = await fetch(`http://localhost:3000/api/api-usage?username=${username}`);
+  const response = await fetch(`${process.env.API_URL}/api-usage?username=${username}`);
 
   return response.json();
 }
