@@ -19,7 +19,7 @@ function Message({ content, role }: IMessageProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`py-8 px-3 md:px-8 group ${role === "user" ? "bg-background-secundary" : ""}`}>
+    <div className={`py-8 px-4 md:px-8 group ${role === "user" ? "bg-background-secundary" : ""}`}>
       <div className="max-w-[800px] mx-auto flex gap-4 md:gap-6 lg:gap-8 relative">
         <div className="h-full flex items-start">
           <div className="w-10 h-10 relative cursor-pointer" onClick={() => new Audio("/cat.mp3").play()}>
@@ -66,12 +66,12 @@ function Message({ content, role }: IMessageProps) {
               </Popover.Portal>
             </Popover.Root>
 
-            <button
+            {/* <button
               onClick={() => speak(content)}
               className="opacity-0 group-hover:opacity-100 text-weak hover:text-normal duration-200 pl-1"
             >
               <SpeakerHigh size={18} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

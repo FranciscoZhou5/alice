@@ -4,12 +4,12 @@ import { createParser, ParsedEvent, ReconnectInterval } from "eventsource-parser
 export interface OpenAIStreamPayload {
   model: string;
   messages: ChatMessage[];
+  stream: boolean;
   temperature?: number;
   top_p?: number;
   frequency_penalty?: number;
   presence_penalty?: number;
   max_tokens?: number;
-  stream: boolean;
   n?: number;
 }
 
@@ -28,8 +28,8 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  
-  console.log(res.status)
+
+  console.log(res.status, res.statusText);
 
   const stream = new ReadableStream({
     async start(controller) {

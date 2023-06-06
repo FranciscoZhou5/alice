@@ -1,3 +1,4 @@
+import { parseCookies } from "nookies";
 import { create } from "zustand";
 
 export type ChatAgent = "user" | "system" | "assistant";
@@ -20,9 +21,9 @@ export const useChatStore = create<IChat>((set, get) => ({
 
   addMessage: async (newMessage: ChatMessage) => {
     const messages = get().messages;
-    const sender = localStorage.getItem("Alycia@username") as string;
+    const { username: sender } = parseCookies();
 
-    set({ messages: [...messages, newMessage] });
+    set({ messages: [...messages, newMessage], chatResponse: "" });
 
     console.time("chat response");
 

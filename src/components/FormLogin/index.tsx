@@ -26,7 +26,7 @@ export default function FormLogin() {
     }
 
     setCookie(null, "username", username, {
-      maxAge: 30 * 24 * 60 * 60,
+      maxAge: 10 * 30 * 24 * 60 * 60,
     });
     router.push("/chat");
   }
