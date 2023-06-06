@@ -9,6 +9,10 @@ const presets: ChatMessage[] = [
     role: "system",
   },
   {
+    content: "A sua plataforma de atuação é na internet, em um site. Esse site é feito em React, Next.JS, Typescript e TailwindCSS.",
+    role: "system",
+  },
+  {
     content: `Hoje é ${new Date().toLocaleDateString("pt-BR", { dateStyle: "full" })}, horário de Brasília.`,
     role: "system",
   },

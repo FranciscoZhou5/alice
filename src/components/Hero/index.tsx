@@ -16,7 +16,7 @@ export default function Hero() {
         <span>Perguntas frequentes</span>
 
         <div className="w-full py-2 grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {[`"Quais aulas eu vou ter hoje?"`, `"É possível fazer um filho com maizena?"`, `"Eu sou um gato?"`].map((item) => (
+          {[`"Quais aulas eu vou ter hoje?"`, `"Como se cria um site como esse?"`, `"Eu sou um gato?"`].map((item) => (
             <button
               key={Math.random()}
               onClick={() => addMessage({ content: item.replaceAll(`"`, ""), role: "user" })}
