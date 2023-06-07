@@ -1,24 +1,42 @@
 import ArrowLeft from "@/components/Icons/ArrowLeft";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import APIUsageChart from "./Chart";
+import { supabase } from "@/lib/supabase";
+
+interface Prompt {
+  content: string;
+  sender: string;
+  created_at: string;
+}
 
 interface APIUsage {
   user: string;
   count: number;
-  prompts: {
-    content: string;
-    sender: string;
-    createdAt: string;
-  }[];
+  prompts: Prompt[];
 }
 
-async function getAPIUsage(): Promise<APIUsage> {
+async function getAPIUsage() {
   const cookiesStore = cookies();
   const username = cookiesStore.get("username")?.value;
 
-  const response = await fetch(`${process.env.API_URL}/api-usage?username=${username}`);
+  const { data } = await supabase.from("prompts").select("*").eq("sender", username);
 
-  return response.json();
+  const dates = (data as Prompt[]).map(({ created_at }) => new Date(created_at));
+
+  const countDatesByDay = dates.reduce((acc, date) => {
+    const dateKey = date.toISOString().slice(0, 10);
+
+    if (!acc[dateKey]) {
+      acc[dateKey] = 0;
+    }
+
+    acc[dateKey]++;
+
+    return acc;
+  }, {} as { [x: string]: number });
+
+  return countDatesByDay;
 }
 
 export default async function APIUsage() {
@@ -34,16 +52,11 @@ export default async function APIUsage() {
       </div>
 
       <main>
-        <div className="rounded-md bg-background-secundary p-2">
-          <h2 className="text-lg font-bold"> Uso da API </h2>
+        <div className="rounded-md bg-background-secundary p-4">
+          <h2 className="text-xl font-bold mb-8"> Uso da API </h2>
 
-          <div className="w-full flex justify-center items-center h-16">
-            <div className="text-sm text-weak text-center">
-              <p> [BETA] </p>
-              <p className="italic">
-                prompts_count: {data.count}; username: {data.user}
-              </p>
-            </div>
+          <div className="w-full flex justify-center items-center h-32 xl:h-44">
+            <APIUsageChart data={data} />
           </div>
         </div>
       </main>
