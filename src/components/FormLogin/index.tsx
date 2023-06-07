@@ -38,7 +38,7 @@ export default function FormLogin() {
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email))  {
       setTimeout(() => setError((oldState) => ({ ...oldState, email: "" })), 3000);
       
-      setError((oldState) => ({ ...oldState, email: "Use um Email válido." }));
+      return setError((oldState) => ({ ...oldState, email: "Use um Email válido." }));
     }
 
     setCookie(null, "username", username, {
