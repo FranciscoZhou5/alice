@@ -21,7 +21,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Alycia",
+  title: "Alice",
   description: "IA-based chatbot",
 };
 
