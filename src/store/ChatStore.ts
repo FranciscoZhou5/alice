@@ -21,7 +21,7 @@ export const useChatStore = create<IChat>((set, get) => ({
 
   addMessage: async (newMessage: ChatMessage) => {
     const messages = get().messages;
-    const { username: sender } = parseCookies();
+    const { username: sender, email } = parseCookies();
 
     set({ messages: [...messages, newMessage], chatResponse: "" });
 
@@ -29,7 +29,7 @@ export const useChatStore = create<IChat>((set, get) => ({
 
     const response = await fetch("/api/response", {
       method: "POST",
-      body: JSON.stringify({ messages: [...messages, newMessage], sender }),
+      body: JSON.stringify({ messages: [...messages, newMessage], sender, email }),
     });
 
     const data = response.body;

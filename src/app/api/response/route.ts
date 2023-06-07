@@ -37,10 +37,11 @@ const presets: ChatMessage[] = [
 export const runtime = "edge";
 
 export async function POST(req: Request) {
-  const { messages, sender } = await req.json();
+  const { messages, sender, email } = await req.json();
 
   const { data, error } = await supabase.from("prompts").insert({
     sender,
+    email,
     content: messages[messages.length - 1].content,
   });
 
