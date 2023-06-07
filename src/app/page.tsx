@@ -9,11 +9,9 @@ export default async function Home() {
   if (cookiesStore.has("username") && cookiesStore.has("email")) {
     const email = cookiesStore.get("email")?.value;
     
-    if (email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
-      return redirect("/")
+    if (email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
+      redirect("/chat")
     }
-    
-    redirect("/chat");
   }
 
   return (
