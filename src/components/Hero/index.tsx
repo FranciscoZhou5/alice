@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <div className="max-w-[900px] mx-auto flex flex-col items-center py-8 px-4 md:px-12">
-      <h1 className="text-3xl font-bold"> Alycia </h1>
+      <h1 className="text-3xl font-bold"> Alice </h1>
 
       <div className="py-4 text-center w-full">
         <span>Perguntas frequentes</span>
