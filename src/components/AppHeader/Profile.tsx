@@ -36,7 +36,7 @@ export default function Profile() {
           align="end"
           className="radix-side-top:animate-slide-up border border-gray rounded-md z-30 radix-side-bottom:animate-slide-down bg-background-secundary w-64 py-2 mt-1"
         >
-          <Link href="/chat/settings/profile" className="px-2 mb-4 flex space-x-2 group hover:bg-background-tertiary py-2 duration-200">
+          <Link onClick={() => setOpen(false)} href="/chat/settings/profile" className="px-2 mb-4 flex space-x-2 group hover:bg-background-tertiary py-2 duration-200">
             <div className="w-12 h-12 relative">
               <Image
                 src="/user-profile.jpg"
