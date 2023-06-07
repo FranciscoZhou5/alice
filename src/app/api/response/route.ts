@@ -13,7 +13,7 @@ const presets: ChatMessage[] = [
     role: "system",
   },
   {
-    content: `Hoje é ${new Date().toLocaleDateString("pt-BR", { dateStyle: "full" })}, horário de Brasília.`,
+    content: `Hoje é ${new Date().toLocaleDateString("pt-BR", { dateStyle: "full", timeZone: "America/Sao_Paulo" })}, horário de Brasília.`,
     role: "system",
   },
   {
