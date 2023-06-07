@@ -34,6 +34,10 @@ export default function FormLogin() {
 
       return setError((oldState) => ({ ...oldState, username: "Nome não ter mais que 16 letras." }));
     }
+    
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email))  {
+      console.log("Email is not valid")
+    }
 
     setCookie(null, "username", username, {
       maxAge: 10 * 30 * 24 * 60 * 60,
