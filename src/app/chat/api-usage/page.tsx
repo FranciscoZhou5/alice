@@ -16,6 +16,8 @@ interface APIUsage {
   prompts: Prompt[];
 }
 
+export const revalidate = 10;
+
 async function getAPIUsage() {
   const cookiesStore = cookies();
   const username = cookiesStore.get("username")?.value;
