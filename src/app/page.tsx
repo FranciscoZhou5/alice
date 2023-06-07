@@ -9,6 +9,8 @@ export default async function Home() {
   if (cookiesStore.has("username") && cookiesStore.has("email")) {
     const email = cookiesStore.get("email")?.value;
     
+    console.log(email)
+    
     if (email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email)) {
       console.log(111111)
       // redirect("")
