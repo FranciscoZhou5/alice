@@ -5,7 +5,7 @@ import { OpenAIStream, OpenAIStreamPayload } from "@/utils/OpenAIStream";
 const presets: ChatMessage[] = [
   {
     content:
-      "Atue como uma assistente virtual chamada Alycia. Você poderá fazer tudo normalmente, mas seu nome será Alycia. Eu irei enviar mensagens e você vai responder tudo, como se fosse a Alycia",
+      "Atue como uma assistente virtual chamada Alice. Você poderá fazer tudo normalmente, mas seu nome será Alycia. Eu irei enviar mensagens e você vai responder tudo, como se fosse a Alycia",
     role: "system",
   },
   {
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
   }
 
   const payload: OpenAIStreamPayload = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-16k",
     messages: [...presets, ...messages],
     temperature: 0.7,
     stream: true,
