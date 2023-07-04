@@ -1,8 +1,11 @@
 import FormLogin from "@/components/FormLogin";
 import { supabase } from "@/lib/supabase";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
 export default async function Home() {
+  const cookiesStore = cookies();
+
   // if (cookiesStore.has("username") && cookiesStore.has("email")) {
   //   const email = cookiesStore.get("email")?.value;
 
@@ -11,9 +14,7 @@ export default async function Home() {
   //   }
   // }
 
-  const { data } = await supabase.from("prompts").select("*").eq("email", "fg45874587@gmail.com");
-
-  console.log(data?.length);
+  const { data } = await supabase.from("prompts").select("*").eq("email", cookiesStore.get("email")?.value);
 
   const closed = true;
 
@@ -25,9 +26,11 @@ export default async function Home() {
             <h2 className="font-bold"> Encerramento </h2>
             <p className="text-sm"> Agradeço a todo mundo que apoiou o projeto e utilizou a ferramenta 🤖. </p>
 
-            <p className="text-sm mt-2 text-weak">
-              Você fez um total de <span className="text-primary">{data?.length}</span> perguntas.
-            </p>
+            {cookiesStore.get("email")?.value && (
+              <p className="text-sm mt-2 text-weak">
+                Você fez um total de <span className="text-primary">{data?.length}</span> perguntas.
+              </p>
+            )}
 
             <div className="w-16 h-[2px] mx-auto bg-background-secundary mt-6 mb-4"></div>
 
