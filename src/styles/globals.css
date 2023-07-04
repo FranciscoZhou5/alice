@@ -4,6 +4,7 @@
 
 body {
   @apply font-sans min-h-screen w-full bg-background-primary text-normal;
+  -webkit-font-smoothing: antialiased;
 }
 
 :is(pre, code) {

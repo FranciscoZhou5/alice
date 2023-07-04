@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-br" className={`${inter.variable} ${jetBrainsMono.variable}`}>
       <body>
-        <AppHeader />
+        {/* <AppHeader /> */}
         {children}
       </body>
     </html>
