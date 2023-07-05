@@ -44,6 +44,14 @@ export default async function Home() {
               >
                 Usar ChatGPT
               </Link>
+
+              <Link
+                target="_blank"
+                className="text-sm hover:text-primary hover:underline duration-200 text-weak mt-2"
+                href="https://github.com/FranciscoZhou5/alice"
+              >
+                Ver código fonte
+              </Link>
             </div>
           </div>
         </main>
